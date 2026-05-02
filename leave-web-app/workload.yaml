@@ -1,0 +1,19 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: leave-web-app
+
+endpoints:
+  - name: http
+    type: HTTP
+    port: 3000
+    basePath: /
+    visibility:
+      - external
+
+dependencies:
+  endpoints:
+    - component: leave-service
+      name: http
+      visibility: project
+      envBindings:
+        address: LEAVE_SERVICE_URL
